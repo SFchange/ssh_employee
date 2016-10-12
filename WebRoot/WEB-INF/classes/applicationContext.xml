@@ -48,10 +48,30 @@
 		<!-- 手动注入services 可以使用aop增强操作 -->
 		<property name="productServices" ref="productServices" />
 	</bean>
+	<!-- 配置action的类 -->
+	<bean id="employeeAction" class="com.bianfeng.employee.action.EmployeeAction"
+		scope="prototype">
+		<property name="employeeService" ref="employeeService"></property>
+	</bean>
+	<bean id="departmentAction" class="com.bianfeng.employee.action.DepartmentAction"
+		scope="prototype">
+		<property name="departmentService" ref="departmentService"></property>
+	</bean>
 	<!-- 配置业务层的类 -->
-
+	<bean id="employeeService" class="com.bianfeng.employee.service.impl.EmployeeServiceImpl">
+		<property name="employeeDao" ref="employeeDao"></property>
+	</bean>
+	<bean id="departmentService"
+		class="com.bianfeng.employee.service.impl.DepartmentServiceImpl">
+		<property name="departmentDao" ref="departmentDao"></property>
+	</bean>
 	<!-- 配置Dao的类 -->
-
+	<bean id="employeeDao" class="com.bianfeng.employee.dao.impl.EmployeeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="departmentDao" class="com.bianfeng.employee.dao.impl.DepartmentDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">

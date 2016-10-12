@@ -7,6 +7,10 @@
 		</package> -->
 	<!-- 在spring中配置struts,这里只需要在class中应用创建的ID即可 -->
 	<package name="ssh" extends="struts-default" namespace="/">
-	
+		<action name="employee_*" class="employeeAction" method="{1}">
+			<result name="input">/index.jsp</result>
+			<result name="success" type="redirect">/frame.jsp</result>
+
+		</action>
 	</package>
 </struts>
