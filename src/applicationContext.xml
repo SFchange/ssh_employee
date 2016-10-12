@@ -59,18 +59,18 @@
 	</bean>
 	<!-- 配置业务层的类 -->
 	<bean id="employeeService" class="com.bianfeng.employee.service.impl.EmployeeServiceImpl">
-		<property name="employeeDao" ref="employeeDao"></property>
+		<property name="employeeDao" ref="employeeDao"/>
 	</bean>
 	<bean id="departmentService"
 		class="com.bianfeng.employee.service.impl.DepartmentServiceImpl">
-		<property name="departmentDao" ref="departmentDao"></property>
+		<property name="departmentDao" ref="departmentDao"/>
 	</bean>
 	<!-- 配置Dao的类 -->
 	<bean id="employeeDao" class="com.bianfeng.employee.dao.impl.EmployeeDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"></property>
+		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<bean id="departmentDao" class="com.bianfeng.employee.dao.impl.DepartmentDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"></property>
+		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager"

@@ -3,8 +3,10 @@ package com.bianfeng.employee.action;
 import java.util.List;
 
 import com.bianfeng.employee.domain.Department;
+import com.bianfeng.employee.domain.PageBean;
 import com.bianfeng.employee.service.DepartmentService;
 import com.bianfeng.employee.service.EmployeeService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -23,10 +25,10 @@ public class DepartmentAction extends ActionSupport implements
 		return department;
 	}
 
-	private Integer CurrPage = 1;
+	private Integer currPage = 1;
 
 	public void setCurrPage(Integer currPage) {
-		CurrPage = currPage;
+		this.currPage = currPage;
 	}
 
 	/**
@@ -34,7 +36,7 @@ public class DepartmentAction extends ActionSupport implements
 	 */
 	private DepartmentService departmentService;
 
-	public void setEmployeeService(DepartmentService departmentService) {
+	public void setDepartmentService(DepartmentService departmentService) {
 		this.departmentService = departmentService;
 	}
 
@@ -43,8 +45,10 @@ public class DepartmentAction extends ActionSupport implements
 	 * 
 	 * @return
 	 */
-	public List<Department> findAll() {
-
-		return null;
+	public String findAll() {
+		PageBean<Department> pageBean=departmentService.findAll(currPage);
+		// 将pageBean存入值栈中
+		ActionContext.getContext().getValueStack().push(pageBean);
+		return "findAll";
 	}
 }
