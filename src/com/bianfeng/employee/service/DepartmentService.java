@@ -13,5 +13,7 @@ public interface DepartmentService {
 
 	PageBean<Department> findAll(Integer currPage);
 
+	void save(Department department);
+
 
 }

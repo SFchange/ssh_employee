@@ -2,6 +2,8 @@ package com.bianfeng.employee.service.impl;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.bianfeng.employee.dao.DepartmentDao;
 import com.bianfeng.employee.dao.EmployeeDao;
 import com.bianfeng.employee.domain.Department;
@@ -14,6 +16,7 @@ import com.bianfeng.employee.service.DepartmentService;
  * @author sf
  *
  */
+@Transactional
 public class DepartmentServiceImpl implements DepartmentService {
 	/**
 	 * 注入DAO层的类
@@ -49,5 +52,13 @@ public class DepartmentServiceImpl implements DepartmentService {
 		List<Department> list=departmentDao.findByPage(begin,pageSize);
 		pageBean.setList(list);
 		return pageBean;
+	}
+
+	/**
+	 * 业务层保存部门的方法
+	 */
+	@Override
+	public void save(Department department) {
+		departmentDao.save(department);
 	}
 }

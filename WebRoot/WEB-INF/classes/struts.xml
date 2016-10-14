@@ -13,6 +13,9 @@
 		</action>
 		<action name="department_*" class="departmentAction" method="{1}">
 			<result name="findAll">/jsp/listdepartment.jsp</result>
+			<result name="saveUI">/jsp/addDep.jsp</result>
+			<result name="saveSuccess" type="redirectAction">department_findAll.action
+			</result>
 		</action>
 	</package>
 </struts>

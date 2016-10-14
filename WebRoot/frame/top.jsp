@@ -33,7 +33,7 @@
 
 <body bgcolor="#0099FF">
 	<div class="div1">
-		<s:property value="#session.existEmployee.ename" />
+		欢迎<s:property value="#session.existEmployee.ename" />登录...
 	</div>
 </body>
 </html>

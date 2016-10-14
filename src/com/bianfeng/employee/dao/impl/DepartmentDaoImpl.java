@@ -36,8 +36,17 @@ public class DepartmentDaoImpl extends HibernateDaoSupport implements
 	@Override
 	public List<Department> findByPage(int begin, int pageSize) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Department.class);
-		List<Department> list=this.getHibernateTemplate().findByCriteria(criteria, begin, pageSize);
+		List<Department> list = this.getHibernateTemplate().findByCriteria(
+				criteria, begin, pageSize);
 		return list;
+	}
+
+	/**
+	 * DAO保存部门方法
+	 */
+	@Override
+	public void save(Department department) {
+		this.getHibernateTemplate().save(department);
 	}
 
 }

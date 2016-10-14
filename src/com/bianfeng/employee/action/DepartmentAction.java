@@ -1,11 +1,8 @@
 package com.bianfeng.employee.action;
 
-import java.util.List;
-
 import com.bianfeng.employee.domain.Department;
 import com.bianfeng.employee.domain.PageBean;
 import com.bianfeng.employee.service.DepartmentService;
-import com.bianfeng.employee.service.EmployeeService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -18,7 +15,7 @@ import com.opensymphony.xwork2.ModelDriven;
  */
 public class DepartmentAction extends ActionSupport implements
 		ModelDriven<Department> {
-	private Department department;
+	private Department department=new Department();
 
 	@Override
 	public Department getModel() {
@@ -46,9 +43,32 @@ public class DepartmentAction extends ActionSupport implements
 	 * @return
 	 */
 	public String findAll() {
-		PageBean<Department> pageBean=departmentService.findAll(currPage);
+		PageBean<Department> pageBean = departmentService.findAll(currPage);
 		// 将pageBean存入值栈中
 		ActionContext.getContext().getValueStack().push(pageBean);
 		return "findAll";
+	}
+
+	/**
+	 * 跳转添加部门添加界面
+	 */
+	public String saveUI() {
+		return "saveUI";
+	}
+
+	/**
+	 * 添加部门的方法
+	 */
+	public String saveDep() {
+		departmentService.save(department);
+		return "saveSuccess";
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 }

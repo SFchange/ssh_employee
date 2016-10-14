@@ -39,7 +39,7 @@ thead {
 			<td align="center" style="font-size:24px; color:#666">部门管理</td>
 		</tr>
 		<tr>
-			<td align="right"><a href="addDepartment.html">添加</a></td>
+			<td align="right"><a href="<%=path %>/department_saveUI.action">添加</a></td>
 		</tr>
 	</table>
 	<br />
@@ -56,7 +56,7 @@ thead {
 				<tr>
 					<td align="center"><s:property value="#d.dname" /></td>
 					<td align="center"><a href="editDept.html"><img
-							src="edits.png" title="修改" /></a></td>
+							src="<%=path %>/images/edits.png" title="修改" /></a></td>
 				</tr>
 			</s:iterator>
 		</tbody>
